@@ -26,6 +26,8 @@ namespace DataStructures
             bt.printIterativePostOrder2Stack();
             Console.WriteLine("Iterative PostOrder Print - 1 Stack");
             bt.printIterativePostOrder();
+            Console.WriteLine("Iterative PostOrder Simple - 1 Stack");
+            bt.printIterativePostOrderSimple();
 
             Console.WriteLine();
 

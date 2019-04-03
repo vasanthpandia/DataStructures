@@ -225,6 +225,37 @@ namespace DataStructures
             }
         }
 
+        public void printIterativePostOrderSimple()
+        {
+            BTNode root = this;
+            Stack<BTNode> traversalStack = new Stack<BTNode>();
+
+            do
+            {
+                while (root != null)
+                {
+                    traversalStack.Push(root);
+                    traversalStack.Push(root);
+
+                    root = root.Left();
+                }
+
+                if (traversalStack.Count() == 0) break;
+
+                root = traversalStack.Pop();
+
+                if (traversalStack.Count() != 0 && traversalStack.Peek() == root)
+                {
+                    root = root.Right();
+                }
+                else
+                {
+                    Console.WriteLine(root.Data());
+                    root = null;
+                }
+            } while (traversalStack.Count() != 0);
+        }
+
         public List<int> ListInorder(List<int> inorder)
         {
             if (this.left != null)
