@@ -190,6 +190,41 @@ namespace DataStructures
             }
         }
 
+        public void printIterativePostOrder()
+        {
+            BTNode root = this;
+            Stack<BTNode> traversalStack = new Stack<BTNode>();
+
+            traversalStack.Push(root);
+
+            while(traversalStack.Count() != 0)
+            {
+                while(root != null)
+                {
+                    if(root.right != null)
+                    {
+                        traversalStack.Push(root.Right());
+                    }
+
+                    traversalStack.Push(root);
+
+                    root = root.Left();
+                }
+
+                root = traversalStack.Pop();
+                if(root.Right() != null &&  traversalStack.Count() != 0 && root.Right() == traversalStack.Peek())
+                {
+                    traversalStack.Pop();
+                    traversalStack.Push(root);
+                    root = root.Right();
+                } else
+                {
+                    Console.WriteLine(root.Data());
+                    root = null;
+                }
+            }
+        }
+
         public List<int> ListInorder(List<int> inorder)
         {
             if (this.left != null)

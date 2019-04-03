@@ -18,12 +18,14 @@ namespace DataStructures
             bt.insert(20).insert(35).insert(30).insert(45).insert(10).insert(15).insert(11).insert(13).insert(50).insert(37).insert(55).insert(40).insert(27).insert(23);
 
             bt.printInOrder();
-            Console.WriteLine("Iterative Inroder Print");
+            Console.WriteLine("\nIterative Inroder Print");
             bt.printIterativeInOrder();
             Console.WriteLine("Iterative PreOrder Print");
             bt.printIterativePreorder();
             Console.WriteLine("Iterative PostOrder Print - 2 Stack");
             bt.printIterativePostOrder2Stack();
+            Console.WriteLine("Iterative PostOrder Print - 1 Stack");
+            bt.printIterativePostOrder();
 
             Console.WriteLine();
 
