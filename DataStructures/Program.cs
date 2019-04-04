@@ -10,6 +10,7 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
+            findLoopStart();
             Console.ReadKey();
         }
 
@@ -35,6 +36,116 @@ namespace DataStructures
             Node n = Node.Removenth(lnode, 1);
 
             n.PrintNode();
+        }
+
+        static Node buildLoopedList(int length, int loopstart)
+        {
+            if(length < loopstart)
+            {
+                return null;
+            }
+
+            Node head = new Node(1);
+            Node current = head;
+            for (int i = 2; i <= length; i++)
+            {
+                current.Next(new Node(i));
+                current = current.Next();
+            }
+
+            Node loopedNode = head;
+
+            for(int i = 1; i < loopstart; i++ )
+            {
+                loopedNode = loopedNode.Next();
+            }
+
+            current.Next(loopedNode);
+
+
+            return head;
+        }
+
+        static Node buildList(int length)
+        {
+            if(length <= 0)
+            {
+                return null;
+            }
+
+            Node head = new Node(1);
+            Node current = head;
+
+            for(int i = 2; i <= length; i++)
+            {
+                current.Next(new Node(i));
+                current = current.Next();
+            }
+
+            return head;
+        }
+
+        static void isLoopPresent()
+        {
+            Node head = buildLoopedList(25, 7);
+
+            Node fastptr, slowptr;
+
+            slowptr = head;
+            fastptr = slowptr.Next().Next();
+
+            while(slowptr != null && fastptr != null && fastptr.Next() != null)
+            {
+                slowptr = slowptr.Next();
+                fastptr = fastptr.Next().Next();
+
+                if(slowptr == fastptr)
+                {
+                    Console.WriteLine("Loop Exists");
+                    break;
+                }
+            }
+
+            if(slowptr != fastptr)
+            {
+                Console.WriteLine("No Loop found");
+            }
+        }
+
+        static void findLoopStart()
+        {
+            Node head = buildLoopedList(20, 10);
+
+            Node fastptr = head;
+            Node slowptr = fastptr;
+
+            while(slowptr != null && fastptr != null && fastptr.Next() != null)
+            {
+                slowptr = slowptr.Next();
+                fastptr = fastptr.Next().Next();
+
+                if(slowptr == fastptr)
+                {
+                    break;
+                }
+            }
+
+            if(slowptr != fastptr)
+            {
+                return;
+            }
+
+            slowptr = head;
+
+            while(slowptr != fastptr)
+            {
+                slowptr = slowptr.Next();
+                fastptr = fastptr.Next();
+            }
+
+            Console.WriteLine("Loop Starts at : " + slowptr.Data());
+
+
         }
 
         static void runBTOperations()
