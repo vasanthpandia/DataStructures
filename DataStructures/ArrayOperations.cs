@@ -79,5 +79,44 @@ namespace DataStructures
 
             return result;
         }
+
+        public static List<int[]> mergeSortedInPlace(int[] nums1, int[] nums2)
+        {
+            List<int[]> result = new List<int[]>();
+
+            for(int i = nums2.Length - 1; i >= 0; i--)
+            {
+                int j = nums1.Length - 1;
+                int last = nums1[j];
+                if(last < nums2[i])
+                {
+                    continue;
+                }
+                j--;
+
+                while(j >= 0)
+                {
+                    if(nums2[i] >= nums1[j])
+                    {
+                        int k = nums1.Length - 1;
+                        while(j < k)
+                        {
+                            nums1[k] = nums1[k - 1];
+                            k--;
+                        }
+                        nums1[j+1] = nums2[i];
+                        break;
+                    }
+                    j--;
+                }
+
+                nums2[i] = last;
+            }
+
+            result.Add(nums1);
+            result.Add(nums2);
+
+            return result;
+        }
     }
 }
