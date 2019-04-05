@@ -519,5 +519,69 @@ namespace DataStructures
             return isBST(node.Left(), l, node) && isBST(node.Right(), node, r);
         }
 
+        // GeeksForGeeks Solution - Gives Wrong Answer - https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/  - Method 4, 2nd approach
+        public static bool isBSTPrev(BTNode node, BTNode prev)
+        {
+            if (node != null)
+            {
+                if(!isBSTPrev(node.Left(), prev))
+                    return false;
+
+                if(prev != null)
+                {
+                    Console.WriteLine("Value of cuurent node :" + node.Data() + " -- Value of prev node : " + prev.Data());
+                }
+
+                if (prev != null && node.Data() <= prev.Data())
+                    return false;
+
+                prev = node;
+
+                return isBSTPrev(node.Right(), prev);
+            }
+
+            return true;
+            
+        }
+
+        public static bool isBSTWithInorder(BTNode node)
+        {
+            if(node == null)
+            {
+                return true;
+            }
+
+            int max = -int.MaxValue;
+
+            Stack<BTNode> inorderStack = new Stack<BTNode>();
+
+            do
+            {
+                while (node != null)
+                {
+                    inorderStack.Push(node);
+
+                    node = node.Left();
+                }
+
+                node = inorderStack.Pop();
+
+                Console.WriteLine("Node Value : " + node.Data() + " -- Max Value : " + max);
+
+                if(node.Data() <= max)
+                {
+                    return false;
+                }
+
+                max = node.Data();
+                node = node.Right();
+
+            } while (inorderStack.Count != 0 && node != null);
+
+            return true;
+
+            
+        }
+
     }
 }

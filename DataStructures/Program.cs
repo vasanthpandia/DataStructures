@@ -13,12 +13,14 @@ namespace DataStructures
             BTNode bt = new BTNode(25);
 
             bt.insert(20).insert(35).insert(30).insert(45).insert(10).insert(15).insert(11).insert(13).insert(50).insert(37).insert(55).insert(40).insert(27).insert(23);
+            //bt.printInOrder();
 
-            Console.WriteLine(BTNode.isBST(bt, null, null));
+            Console.WriteLine(BTNode.isBSTWithInorder(bt));
             int[] a = { 1, 2, 3, 4, 5, 6, 7};
             BTNode node = buildBT(a);
-            node.printPreOrder();
-            Console.WriteLine(BTNode.isBST(node, null, null));
+            //node.printInOrder();
+            Console.WriteLine(BTNode.isBSTWithInorder(node));
+            //BTNode.printLevelOrder(node);
 
             Console.ReadKey();
         }
