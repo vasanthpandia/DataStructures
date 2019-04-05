@@ -10,18 +10,16 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            int[] a = { 1, 3, 5, 7 , 9, 11, 13, 15, 17, 19};
-            int[] b = { 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 };
-            List<int[]> c = ArrayOperations.mergeSortedInPlace(a, b);
+            BTNode bt = new BTNode(25);
 
-            foreach(int[] s in c)
-            {
-                for(int j = 0; j < s.Length; j++)
-                {
-                    Console.Write(""+ s[j] + " ");
-                }
-                Console.WriteLine();
-            }
+            bt.insert(20).insert(35).insert(30).insert(45).insert(10).insert(15).insert(11).insert(13).insert(50).insert(37).insert(55).insert(40).insert(27).insert(23);
+
+            Console.WriteLine(BTNode.isBST(bt, null, null));
+            int[] a = { 1, 2, 3, 4, 5, 6, 7};
+            BTNode node = buildBT(a);
+            node.printPreOrder();
+            Console.WriteLine(BTNode.isBST(node, null, null));
+
             Console.ReadKey();
         }
 
@@ -177,6 +175,24 @@ namespace DataStructures
             Console.WriteLine("Iterative PostOrder Simple - 1 Stack");
             bt.printIterativePostOrderSimple();
 
+        }
+
+        static BTNode buildBT(int[] nums)
+        {
+            if(nums.Length != 7)
+            {
+                return null;
+            }
+
+            BTNode root = new BTNode(nums[0]);
+            root.Left(new BTNode(nums[1]));
+            root.Right(new BTNode(nums[2]));
+            root.Left().Left(new BTNode(nums[3]));
+            root.Left().Right(new BTNode(nums[4]));
+            root.Right().Left(new BTNode(nums[5]));
+            root.Right().Right(new BTNode(nums[6]));
+
+            return root;
         }
 
         static int LastRemaining(int n)

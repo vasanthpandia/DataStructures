@@ -498,5 +498,26 @@ namespace DataStructures
 
             return (old_val + new_val);
         }
+
+        public static bool isBST(BTNode node, BTNode l, BTNode r)
+        {
+            if(node == null)
+            {
+                return true;
+            }
+
+            if(l != null && node.Data() < l.Data())
+            {
+                return false;
+            }
+
+            if(r != null && node.Data() > r.Data())
+            {
+                return false;
+            }
+
+            return isBST(node.Left(), l, node) && isBST(node.Right(), node, r);
+        }
+
     }
 }
