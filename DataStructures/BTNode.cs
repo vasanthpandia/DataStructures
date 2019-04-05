@@ -520,22 +520,24 @@ namespace DataStructures
         }
 
         // GeeksForGeeks Solution - Gives Wrong Answer - https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/  - Method 4, 2nd approach
-        public static bool isBSTPrev(BTNode node, BTNode prev)
+        public static bool isBSTPrev(BTNode node, List<BTNode> prev)
         {
             if (node != null)
             {
                 if(!isBSTPrev(node.Left(), prev))
                     return false;
 
-                if(prev != null)
+                if(prev.Count > 0)
                 {
-                    Console.WriteLine("Value of cuurent node :" + node.Data() + " -- Value of prev node : " + prev.Data());
+                    Console.WriteLine("Value of current node :" + node.Data() + " -- Value of prev node : " + prev[prev.Count - 1].Data());
                 }
 
-                if (prev != null && node.Data() <= prev.Data())
+                if (prev.Count > 0 && node.Data() <= prev[prev.Count - 1].Data())
+                {
                     return false;
+                }
 
-                prev = node;
+                prev.Add(node);
 
                 return isBSTPrev(node.Right(), prev);
             }
@@ -544,6 +546,14 @@ namespace DataStructures
             
         }
 
+        public static bool isBSTUtil(BTNode node)
+        {
+            List<BTNode> prev = new List<BTNode>();
+
+            return isBSTPrev(node, prev);
+        }
+
+        // LeetCode Solution - Gives Wrong Answer
         public static bool isBSTWithInorder(BTNode node)
         {
             if(node == null)
@@ -576,7 +586,7 @@ namespace DataStructures
                 max = node.Data();
                 node = node.Right();
 
-            } while (inorderStack.Count != 0 && node != null);
+            } while (inorderStack.Count != 0 || node != null);
 
             return true;
 
