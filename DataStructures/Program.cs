@@ -16,7 +16,7 @@ namespace DataStructures
             //bt.printInOrder();
             BTNode.printLevelOrder(bt);
 
-            Console.WriteLine(BTNode.isBSTWithInorder(bt));
+            Console.WriteLine(BTNode.isBSTUtil(bt));
             int[] a = { 1, 2, 3, 4, 5, 16, 7};
             BTNode node = buildBT(a);
             node.printInOrder();
@@ -31,7 +31,7 @@ namespace DataStructures
             Console.WriteLine(node.Right().Right().Data());
 
 
-            Console.WriteLine(BTNode.isBSTWithInorder(node));
+            Console.WriteLine(BTNode.isBSTUtil(node));
 
             Console.ReadKey();
         }

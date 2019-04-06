@@ -519,7 +519,6 @@ namespace DataStructures
             return isBST(node.Left(), l, node) && isBST(node.Right(), node, r);
         }
 
-        // GeeksForGeeks Solution - Gives Wrong Answer - https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/  - Method 4, 2nd approach
         public static bool isBSTPrev(BTNode node, List<BTNode> prev)
         {
             if (node != null)
