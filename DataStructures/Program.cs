@@ -10,7 +10,9 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            ArrayOperations.removeDuplicates("Hello");
+            int[] a = { 7, 8, 0, 1, 2, 3, 4, 5, 6 };
+
+            Console.WriteLine("The rotation Point is : " + ArrayOperations.findInRotatedArray(a, 4));
 
             Console.ReadKey();
         }

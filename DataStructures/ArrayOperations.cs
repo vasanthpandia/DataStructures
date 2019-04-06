@@ -173,5 +173,59 @@ namespace DataStructures
 
             Console.WriteLine(a);
         }
+
+        public static int findRotationPoint(int[] nums)
+        {
+            int first, last;
+            first = 0;
+            last = nums.Length - 1;
+
+            while(first < last)
+            {
+                int mid = (first + last) / 2;
+
+                if(mid > 0 && nums[mid] < nums[mid - 1])
+                {
+                    return mid;
+                }
+
+                if(mid < nums.Length && nums[mid] > nums[mid + 1])
+                {
+                    return mid + 1;
+                }
+
+                if(nums[mid] > nums[nums.Length - 1])
+                {
+                    first = mid + 1;
+                } else {
+                    last = mid - 1;
+                }
+
+            }
+
+            return -1;
+        }
+
+        public static int findInRotatedArray(int[] nums, int target)
+        {
+            int pivot = findRotationPoint(nums);
+            int first, last;
+
+            first = 0;
+            last = nums.Length - 1;
+
+            if(nums[pivot] == target)
+            {
+                return pivot;
+            } else if(target < nums[nums.Length - 1])
+            {
+                return BinarySearch(nums, target, pivot + 1, last);
+            } else if(target > nums[nums.Length - 1])
+            {
+                return BinarySearch(nums, target, first, pivot - 1);
+            }
+
+            return -1;
+        }
     }
 }
