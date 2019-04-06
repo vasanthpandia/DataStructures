@@ -441,6 +441,23 @@ namespace DataStructures
             }
         }
 
+        public static Queue<BTNode> collectLeavesQueue(BTNode node, Queue<BTNode> btqueue)
+        {
+            if(node != null)
+            {
+                btqueue = collectLeavesQueue(node.Left(), btqueue);
+
+                if(node.Left() == null && node.Right() == null)
+                {
+                    btqueue.Enqueue(node);
+                }
+
+                btqueue = collectLeavesQueue(node.Right(), btqueue);
+            }
+
+            return btqueue;
+        }
+
         public static void printBoundary(BTNode node)
         {
             if(node != null)
