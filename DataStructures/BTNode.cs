@@ -483,6 +483,34 @@ namespace DataStructures
            
         }
 
+        public static BTNode lcabt(BTNode node, BTNode node1, BTNode node2)
+        {
+            if(node == null)
+            {
+                return null;
+            }
+
+            if(node.Data() == node1.Data() || node.Data() == node2.Data())
+            {
+                return node;
+            }
+
+            BTNode left = lcabt(node.left, node1, node2);
+            BTNode right = lcabt(node.Right(), node1, node2);
+
+            if(left != null && right != null)
+            {
+                return node;
+            }
+
+            if(left == null && right == null)
+            {
+                return null;
+            }
+
+            return left != null ? left : right;
+        }
+
         public static int toSumTree(BTNode node)
         {
             if(node == null)

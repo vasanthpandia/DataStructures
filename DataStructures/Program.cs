@@ -14,6 +14,8 @@ namespace DataStructures
 
             Console.WriteLine("The rotation Point is : " + ArrayOperations.findInRotatedArray(a, 4));
 
+            runBTOperations();
+
             Console.ReadKey();
         }
 
@@ -157,17 +159,24 @@ namespace DataStructures
 
             bt.insert(20).insert(35).insert(30).insert(45).insert(10).insert(15).insert(11).insert(13).insert(50).insert(37).insert(55).insert(40).insert(27).insert(23);
 
-            bt.printInOrder();
-            Console.WriteLine("\nIterative Inroder Print");
-            bt.printIterativeInOrder();
-            Console.WriteLine("Iterative PreOrder Print");
-            bt.printIterativePreorder();
-            Console.WriteLine("Iterative PostOrder Print - 2 Stack");
-            bt.printIterativePostOrder2Stack();
-            Console.WriteLine("Iterative PostOrder Print - 1 Stack");
-            bt.printIterativePostOrder();
-            Console.WriteLine("Iterative PostOrder Simple - 1 Stack");
-            bt.printIterativePostOrderSimple();
+            BTNode.printLevelOrder(bt);
+
+            BTNode bt1 = new BTNode(30);
+            BTNode bt2 = new BTNode(50);
+
+            Console.Write("The LCA of 30 and 50 is : " + BTNode.lcabt(bt, bt1, bt2).Data());
+
+            //bt.printInOrder();
+            //Console.WriteLine("\nIterative Inroder Print");
+            //bt.printIterativeInOrder();
+            //Console.WriteLine("Iterative PreOrder Print");
+            //bt.printIterativePreorder();
+            //Console.WriteLine("Iterative PostOrder Print - 2 Stack");
+            //bt.printIterativePostOrder2Stack();
+            //Console.WriteLine("Iterative PostOrder Print - 1 Stack");
+            //bt.printIterativePostOrder();
+            //Console.WriteLine("Iterative PostOrder Simple - 1 Stack");
+            //bt.printIterativePostOrderSimple();
 
         }
 
