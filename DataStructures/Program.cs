@@ -10,28 +10,8 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            BTNode bt = new BTNode(25);
-
-            bt.insert(20).insert(35).insert(30).insert(45).insert(10).insert(15).insert(11).insert(13).insert(50).insert(37).insert(55).insert(40).insert(27).insert(23);
-            //bt.printInOrder();
-            BTNode.printLevelOrder(bt);
-
-            Console.WriteLine(BTNode.isBSTUtil(bt));
-            int[] a = { 1, 2, 3, 4, 5, 16, 7};
-            BTNode node = buildBT(a);
-            node.printInOrder();
-            BTNode.printLevelOrder(node);
-
-            Console.WriteLine(node.Data());
-            Console.WriteLine(node.Left().Data());
-            Console.WriteLine(node.Right().Data());
-            Console.WriteLine(node.Left().Left().Data());
-            Console.WriteLine(node.Left().Right().Data());
-            Console.WriteLine(node.Right().Left().Data());
-            Console.WriteLine(node.Right().Right().Data());
-
-
-            Console.WriteLine(BTNode.isBSTUtil(node));
+            int[] nums = { 1, 2, 3, 4, 5 };
+            ArrayOperations.printProductArray(nums);
 
             Console.ReadKey();
         }

@@ -118,5 +118,38 @@ namespace DataStructures
 
             return result;
         }
+
+        public static void printProductArray(int[] nums)
+        {
+            int[] products = new int[nums.Length];
+
+            for(int i = 0; i < products.Length; i++)
+            {
+                products[i] = 1;
+            }
+
+            int temp = 1;
+
+            // Find Left Products in Products Arrray
+            for(int i = 0; i < nums.Length; i++)
+            {
+                products[i] = temp;
+                temp *= nums[i];
+            }
+
+            temp = 1;
+
+            // Update Elements in Products array to final result
+            for(int i = nums.Length - 1; i >= 0; i--)
+            {
+                products[i] *= temp;
+                temp *= nums[i];
+            }
+
+            for(int i = 0; i < products.Length; i++)
+            {
+                Console.Write("" + products[i] + " ");
+            }
+        }
     }
 }
