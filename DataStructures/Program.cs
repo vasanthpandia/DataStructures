@@ -10,8 +10,7 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            int[] nums = { 1, 2, 3, 4, 5 };
-            ArrayOperations.printProductArray(nums);
+            ArrayOperations.removeDuplicates("Hello");
 
             Console.ReadKey();
         }
@@ -211,6 +210,29 @@ namespace DataStructures
             }
 
             return mylist[0];
+        }
+
+        static void nthfibonacci(int n)
+        {
+            int[] fib = new int[n + 1];
+
+            Console.WriteLine("Fibonacci of n = " + n + " is " + nthfib(n, fib));
+
+        }
+
+        static int nthfib(int n, int[] nums)
+        {
+            if(n == 0 || n == 1)
+            {
+                return n;
+            }
+
+            if(nums[n] == 0)
+            {
+                nums[n] = nthfib(n-1, nums) + nthfib(n-2, nums);
+            }
+
+            return nums[n];
         }
     }
 }

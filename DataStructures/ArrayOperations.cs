@@ -151,5 +151,27 @@ namespace DataStructures
                 Console.Write("" + products[i] + " ");
             }
         }
+
+        public static void removeDuplicates(String str)
+        {
+            byte[] chars = new byte[128];
+
+            for(int i = 0; i < str.Length; i++)
+            {
+                chars[str[i]] = 1;
+            }
+
+            String a = "";
+
+            for(int i = 0; i < 128; i++)
+            {
+                if(chars[i] == 1)
+                {
+                    a += (char)i;
+                }
+            }
+
+            Console.WriteLine(a);
+        }
     }
 }
