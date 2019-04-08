@@ -10,11 +10,13 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            int[] a = { 7, 8, 0, 1, 2, 3, 4, 5, 6 };
+            //int[] a = { 7, 8, 0, 1, 2, 3, 4, 5, 6 };
 
-            Console.WriteLine("The rotation Point is : " + ArrayOperations.findInRotatedArray(a, 4));
+            //Console.WriteLine("The rotation Point is : " + ArrayOperations.findInRotatedArray(a, 4));
 
-            runBTOperations();
+            //runBTOperations();
+
+            LRUOperations();
 
             Console.ReadKey();
         }
@@ -244,6 +246,34 @@ namespace DataStructures
             }
 
             return nums[n];
+        }
+
+        static void LRUOperations()
+        {
+            LRUCache lru = new LRUCache(5);
+            int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+            for(int i = 0; i < 5; i++)
+            {
+                lru.Put(nums[i], nums[i]);
+            }
+
+            lru.printall();
+
+            Console.WriteLine("Access Element 2 : " + lru.Get(3));
+
+            lru.printall();
+
+            Console.WriteLine("Access Element 4 :" + lru.Get(4));
+
+            lru.printall();
+
+            lru.Put(6, 46);
+            lru.Put(7, 35);
+
+            lru.printall();
+
+
         }
     }
 }

@@ -6,6 +6,7 @@ Implementation of Popular Datastructures and their ADT in C#
   - Stack
   - Queue
   - Arrays
+  - LRU Cache - Supports integer key and value
   
 ## To-Do:
   - Graphs
