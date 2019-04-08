@@ -15,8 +15,9 @@ namespace DataStructures
             //Console.WriteLine("The rotation Point is : " + ArrayOperations.findInRotatedArray(a, 4));
 
             //runBTOperations();
+            QueueOperations2Stack();
 
-            LRUOperations();
+            //LRUOperations();
 
             Console.ReadKey();
         }
@@ -274,6 +275,23 @@ namespace DataStructures
             lru.printall();
 
 
+        }
+
+        static void QueueOperations2Stack()
+        {
+            int[] a = { 10, 15, 20, 25, 30, 35, 40, 45 };
+
+            TwoStackQueue<int> queue = new TwoStackQueue<int>();
+
+            foreach(int number in a)
+            {
+                queue.Enqueue(number);
+            }
+
+            foreach(int number in a)
+            {
+                Console.Write("" + queue.Dequeue() + " ");
+            }
         }
     }
 }
