@@ -351,6 +351,56 @@ namespace DataStructures
 
         }
 
+        public static void printLevelOrderZigZag(BTNode node)
+        {
+            Stack<BTNode> currentlevel = new Stack<BTNode>();
+            Stack<BTNode> nextLevel = new Stack<BTNode>();
+
+            currentlevel.Push(node);
+            bool righttoleft = false;
+
+            while(currentlevel.Count > 0)
+            {
+                BTNode n = currentlevel.Pop();
+
+                Console.Write("" + n.Data() + " ");
+
+                if(righttoleft)
+                {
+                    if(n.Right() != null)
+                    {
+                        nextLevel.Push(n.Right());
+                    }
+
+                    if(n.Left() != null)
+                    {
+                        nextLevel.Push(n.Left());
+                    }
+                } else
+                {
+                    if (n.Left() != null)
+                    {
+                        nextLevel.Push(n.Left());
+                    }
+
+                    if (n.Right() != null)
+                    {
+                        nextLevel.Push(n.Right());
+                    }
+                }
+
+                if(currentlevel.Count == 0)
+                {
+                    righttoleft = !righttoleft;
+                    Stack<BTNode> temp = nextLevel;
+                    nextLevel = currentlevel;
+                    currentlevel = temp;
+                    Console.WriteLine();
+                }
+
+            }
+        }
+
         public static void printReverseLevelOrder(BTNode node)
         {
             Queue<BTNode> q = new Queue<BTNode>();

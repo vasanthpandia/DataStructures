@@ -14,8 +14,8 @@ namespace DataStructures
 
             //Console.WriteLine("The rotation Point is : " + ArrayOperations.findInRotatedArray(a, 4));
 
-            //runBTOperations();
-            QueueOperations2Stack();
+            runBTOperations();
+            //QueueOperations2Stack();
 
             //LRUOperations();
 
@@ -167,7 +167,10 @@ namespace DataStructures
             BTNode bt1 = new BTNode(30);
             BTNode bt2 = new BTNode(50);
 
-            Console.Write("The LCA of 30 and 50 is : " + BTNode.lcabt(bt, bt1, bt2).Data());
+            //Console.Write("The LCA of 30 and 50 is : " + BTNode.lcabt(bt, bt1, bt2).Data());
+
+            BTNode.printLevelOrderZigZag(bt);
+            BTNode.printLevelZigZagQueue(bt);
 
             //bt.printInOrder();
             //Console.WriteLine("\nIterative Inroder Print");
