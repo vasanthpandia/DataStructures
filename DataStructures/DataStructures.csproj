@@ -47,6 +47,7 @@
     <Compile Include="LinkedList.cs" />
     <Compile Include="ListNode.cs" />
     <Compile Include="LRUCache.cs" />
+    <Compile Include="MinHeap.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

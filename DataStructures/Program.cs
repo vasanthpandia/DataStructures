@@ -10,15 +10,7 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            //int[] a = { 7, 8, 0, 1, 2, 3, 4, 5, 6 };
-
-            //Console.WriteLine("The rotation Point is : " + ArrayOperations.findInRotatedArray(a, 4));
-
-            runBTOperations();
-            //QueueOperations2Stack();
-
-            //LRUOperations();
-
+            Console.WriteLine();
             Console.ReadKey();
         }
 
@@ -170,7 +162,7 @@ namespace DataStructures
             //Console.Write("The LCA of 30 and 50 is : " + BTNode.lcabt(bt, bt1, bt2).Data());
 
             BTNode.printLevelOrderZigZag(bt);
-            BTNode.printLevelZigZagQueue(bt);
+            //BTNode.printLevelZigZagQueue(bt);
 
             //bt.printInOrder();
             //Console.WriteLine("\nIterative Inroder Print");
@@ -294,6 +286,23 @@ namespace DataStructures
             foreach(int number in a)
             {
                 Console.Write("" + queue.Dequeue() + " ");
+            }
+        }
+
+        static void HeapOperations()
+        {
+            int[] nums = { 22, 1, 45, 8, 7, 16, 19, 25, 17, 91, 0, 208, 10 };
+
+            MinHeap heap = new MinHeap();
+
+            foreach(int num in nums)
+            {
+                heap.add(num);
+            }
+
+            while(heap.Size() > 0)
+            {
+                Console.Write("" + heap.poll() + " ");
             }
         }
     }
