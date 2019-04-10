@@ -10,6 +10,11 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
+            string s = "Pandiarajan";
+
+            int a = StringOperations.longestNRSubarrayOptimized(s);
+            Console.Write("The longest non repeating subarray lenth of '" + s + "' is " + a);
+
             Console.WriteLine();
             Console.ReadKey();
         }
