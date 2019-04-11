@@ -68,5 +68,28 @@ namespace DataStructures
 
             return ans;
         }
+
+        public static void generateAllSubstrings(string str)
+        {
+            int len = 1;
+
+            while(len <= str.Length)
+            {
+                for(int start = 0; start <= str.Length - len; start++)
+                {
+                    string s = "";
+
+                    int end = start + (len - 1);
+
+                        for(int k = start; k <= end; k++)
+                        {
+                            s += str[k];
+                        }
+
+                    Console.WriteLine(s);
+                }
+                len++;
+            }
+        }
     }
 }

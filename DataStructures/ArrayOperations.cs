@@ -205,5 +205,68 @@ namespace DataStructures
 
             return -1;
         }
+
+        public static int kthlargest(List<int> nums, int k)
+        {
+            int size = nums.Count;
+            int num = size - k;
+
+            return quickSelect(nums, 0, size - 1, k - 1);
+        }
+
+        public static int quickSelect(List<int> nums, int left, int right, int k)
+        {
+            if (left == right)
+            {
+                return nums[left];
+            }
+
+            Random rnd = new Random();
+
+            int pivot_index = left + rnd.Next(right - left);
+
+            pivot_index = partition(nums, left, right, pivot_index);
+
+            if (pivot_index == k)
+            {
+                return nums[pivot_index];
+            }
+            else if (pivot_index < k)
+            {
+                return quickSelect(nums, pivot_index + 1, right, k);
+            }
+            else
+            {
+                return quickSelect(nums, left, pivot_index - 1, k);
+            }
+        }
+
+        public static int partition(List<int> nums, int left, int right, int pivot_index)
+        {
+            int pivot = nums[pivot_index];
+            swap(nums, pivot_index, right);
+
+            int storeindex = left;
+
+            for(int i = left; i < right; i++)
+            {
+                if(nums[i] < pivot)
+                {
+                    swap(nums, i, storeindex);
+                    storeindex++;
+                }
+            }
+
+            swap(nums, storeindex, right);
+
+            return storeindex;
+        }
+
+        public static void swap(List<int> nums, int i, int j)
+        {
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+        }
     }
 }

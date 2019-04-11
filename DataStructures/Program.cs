@@ -10,10 +10,7 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            string s = "Pandiarajan";
-
-            int a = StringOperations.longestNRSubarrayOptimized(s);
-            Console.Write("The longest non repeating subarray lenth of '" + s + "' is " + a);
+            StringOperations.generateAllSubstrings("Vasanth");
 
             Console.WriteLine();
             Console.ReadKey();
@@ -159,14 +156,17 @@ namespace DataStructures
 
             bt.insert(20).insert(35).insert(30).insert(45).insert(10).insert(15).insert(11).insert(13).insert(50).insert(37).insert(55).insert(40).insert(27).insert(23);
 
-            BTNode.printLevelOrder(bt);
+            BTNode btt = BTNode.deleteNode(bt, 15);
 
-            BTNode bt1 = new BTNode(30);
-            BTNode bt2 = new BTNode(50);
+            bt.printInOrder();
+            //BTNode.printLevelOrder(bt);
+
+            Console.WriteLine("Deleted : " + btt.Data());
+            BTNode.printLevelOrder(bt);
 
             //Console.Write("The LCA of 30 and 50 is : " + BTNode.lcabt(bt, bt1, bt2).Data());
 
-            BTNode.printLevelOrderZigZag(bt);
+            //BTNode.printLevelOrderZigZag(bt);
             //BTNode.printLevelZigZagQueue(bt);
 
             //bt.printInOrder();

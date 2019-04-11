@@ -682,9 +682,53 @@ namespace DataStructures
 
             } while (inorderStack.Count != 0 || node != null);
 
-            return true;
+            return true;            
+        }
 
-            
+        public static BTNode deleteNode(BTNode node, int key)
+        {
+            if(node == null)
+            {
+                return node;
+            }
+
+            if(key < node.Data())
+            {
+                return deleteNode(node.Left(), key);
+            } else if(node.Data() < key)
+            {
+                return deleteNode(node.Right(), key);
+            } else
+            {
+                if(node.Left() == null)
+                {
+                    return node.Right();
+                } else if(node.Right() == null)
+                {
+                    return node.Left();
+                }
+
+                int temp = node.Data();
+
+                BTNode min = minNode(node.Right());
+
+                node.Data(min.Data());
+
+                BTNode deleted = deleteNode(node.Right(), min.Data());
+                min.Data(temp);
+            }
+
+            return node;
+        }
+
+        public static BTNode minNode(BTNode node)
+        {
+            while(node.Left() != null)
+            {
+                node = node.Left();
+            }
+
+            return node;
         }
 
     }
