@@ -316,5 +316,28 @@ namespace DataStructures
 
             return -1;
         }
+
+        // Return a unique list from a sorted array
+        public static int[] uniqueArrayFromSorted(int[] nums)
+        {
+            List<int> resultList = new List<int>();
+
+            if(nums == null || nums.Length == 0)
+            {
+                return resultList.ToArray();
+            }
+
+            resultList.Add(nums[0]);
+
+            for(int i = 1; i < nums.Count(); i++)
+            {
+                if(nums[i] != nums[i-1])
+                {
+                    resultList.Add(nums[i]);
+                }
+            }
+
+            return resultList.ToArray();
+        }
     }
 }

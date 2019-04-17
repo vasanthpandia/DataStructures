@@ -10,12 +10,20 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            int[] a = { 1, 4, 6, 8, 11 };
-            int[] b = { 2, 5, 7 };
 
-            double median = ArrayOperations.medianOfSorted(a, b);
+            int[] nums = {1,1,1};
 
-            Console.WriteLine("Median is : " + median);
+            int[] resultNums = ArrayOperations.uniqueArrayFromSorted(nums);
+
+            if(resultNums.Length == 0)
+            {
+                Console.WriteLine("The list is empty");
+            }
+
+            for(int i = 0; i < resultNums.Length; i++)
+            {
+                Console.Write("" + resultNums[i] + " ");
+            }
 
             Console.WriteLine();
             Console.ReadKey();
