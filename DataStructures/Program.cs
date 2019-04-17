@@ -10,7 +10,12 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            StringOperations.generateAllSubstrings("Vasanth");
+            int[] a = { 1, 4, 6, 8, 11 };
+            int[] b = { 2, 5, 7 };
+
+            double median = ArrayOperations.medianOfSorted(a, b);
+
+            Console.WriteLine("Median is : " + median);
 
             Console.WriteLine();
             Console.ReadKey();
