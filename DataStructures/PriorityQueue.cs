@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataStructures
 {
-    class PriorityQueue<T>
+    class PriorityQueue<T> where T : IComparable 
     {
         private List<T> data;
 
@@ -57,10 +57,36 @@ namespace DataStructures
             return data[getParentIndex(index)];
         }
 
-        private void heapiyDown()
+        private int Compare(T item1, T item2)
         {
-
+            return 0;
         }
+
+        //private void heapifyDown()
+        //{
+        //    int index = 0;
+
+        //    while (hasLeftChild(index))
+        //    {
+        //        int smallerChildIndex = getLeftChildIndex(index);
+        //        int c = Compare(rightChild(index), leftChild(index));
+        //        if (hasRightChild(index) &&  c < 0 )
+        //        {
+        //            smallerChildIndex = getRightChildIndex(index);
+        //        }
+
+        //        if (Compare(data[smallerChildIndex], data[index]))
+        //        {
+        //            swap(smallerChildIndex, index);
+        //        }
+        //        else
+        //        {
+        //            break;
+        //        }
+
+        //        index = smallerChildIndex;
+        //    }
+        //}
 
         private void heapifyUp()
         {
