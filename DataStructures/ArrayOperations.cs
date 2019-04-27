@@ -339,5 +339,73 @@ namespace DataStructures
 
             return resultList.ToArray();
         }
+
+        // Merge Sort of an array
+
+        public static int[] mergeSort(int[] nums)
+        {
+            int n = nums.Length;
+            if(n < 2)
+            {
+                return nums;
+            }
+
+            int mid = n / 2;
+
+            int[] l = new int[mid];
+            int[] r = new int[n - mid];
+
+            for(int i = 0; i < mid; i++)
+            {
+                l[i] = nums[i];
+            }
+
+            for(int i = mid; i < n; i++)
+            {
+                r[i - mid] = nums[i];
+            }
+
+            l = mergeSort(l);
+            r = mergeSort(r);
+
+            return mergeSorted(l, r);
+        }
+
+        // Backtracking
+
+        //public static List<List<int>> generateAllSubArrays(int[] nums)
+        //{
+
+        //    //return nums;
+        //}
+
+        //public static List<List<int>> backTrack(int[] nums, int start, int size, List<int> current, List<List<int>> result)
+        //{
+        //    if(start == size)
+        //    {
+        //        result.Add(current);
+        //        return result;
+        //    }
+
+        //}
+
+        public static List<int> kLargest(int[] nums, int k)
+        {
+            List<int> result = new List<int>();
+            SortedList<int, Object> a = new SortedList<int, Object>();
+
+            foreach(int i in nums)
+            {
+                a.Add(i, null);
+            }
+
+            a.Reverse();
+
+            for(int i = 0; i < k; i++) {
+               result.Add(a.ElementAt(i).Key);
+            }
+
+            return result;
+        }
     }
 }

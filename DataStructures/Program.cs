@@ -10,21 +10,15 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
+            //Merge Sort
+            int[] a = { 8, 9, 2, 3, 0, 4, 1, 9 };
 
-            int[] nums = {1,1,1};
+            List<int> b = ArrayOperations.kLargest(a, 3);
 
-            int[] resultNums = ArrayOperations.uniqueArrayFromSorted(nums);
-
-            if(resultNums.Length == 0)
+            foreach(int s in b)
             {
-                Console.WriteLine("The list is empty");
+                Console.Write("" + s + " ");
             }
-
-            for(int i = 0; i < resultNums.Length; i++)
-            {
-                Console.Write("" + resultNums[i] + " ");
-            }
-
             Console.WriteLine();
             Console.ReadKey();
         }
