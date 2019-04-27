@@ -62,35 +62,48 @@ namespace DataStructures
             return 0;
         }
 
-        //private void heapifyDown()
-        //{
-        //    int index = 0;
-
-        //    while (hasLeftChild(index))
-        //    {
-        //        int smallerChildIndex = getLeftChildIndex(index);
-        //        int c = Compare(rightChild(index), leftChild(index));
-        //        if (hasRightChild(index) &&  c < 0 )
-        //        {
-        //            smallerChildIndex = getRightChildIndex(index);
-        //        }
-
-        //        if (Compare(data[smallerChildIndex], data[index]))
-        //        {
-        //            swap(smallerChildIndex, index);
-        //        }
-        //        else
-        //        {
-        //            break;
-        //        }
-
-        //        index = smallerChildIndex;
-        //    }
-        //}
-
-        private void heapifyUp()
+        // Swap elements
+        private void swap(int fromIndex, int toIndex)
         {
+            T temp = data[toIndex];
+            data[toIndex] = data[fromIndex];
+            data[fromIndex] = temp;
+        }
 
+        private void heapifyDown()
+        {
+            int index = 0;
+
+            while (hasLeftChild(index))
+            {
+                int smallerChildIndex = getLeftChildIndex(index);
+                if (hasRightChild(index) && rightChild(index).CompareTo(leftChild(index)) < 0)
+                {
+                    smallerChildIndex = getRightChildIndex(index);
+                }
+
+                if (data[smallerChildIndex].CompareTo(data[index]) < 0)
+                {
+                    swap(smallerChildIndex, index);
+                }
+                else
+                {
+                    break;
+                }
+
+                index = smallerChildIndex;
+            }
+        }
+
+        public void heapifyUp()
+        {
+            int index = Count() - 1;
+
+            while (hasParent(index) && getParent(index).CompareTo(data[index]) > 0)
+            {
+                swap(index, getParentIndex(index));
+                index = getParentIndex(index);
+            }
         }
 
         // Public API Methods
@@ -124,10 +137,18 @@ namespace DataStructures
             data.RemoveAt(last);
 
             --last;
-
-            //heapifyDown();
+            heapifyDown();
 
             return frontItem;
         }
+
+        public void Add(T item)
+        {
+            data.Add(item);
+
+            heapifyUp();
+        }
+
+
     }
 }
