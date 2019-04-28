@@ -389,20 +389,18 @@ namespace DataStructures
 
         //}
 
-        public static List<int> kLargest(int[] nums, int k)
+        public static List<int> kSmallest(int[] nums, int k)
         {
             List<int> result = new List<int>();
-            SortedList<int, Object> a = new SortedList<int, Object>();
+            PriorityQueue<int> a = new PriorityQueue<int>();
 
             foreach(int i in nums)
             {
-                a.Add(i, null);
+                a.Add(i);
             }
 
-            a.Reverse();
-
             for(int i = 0; i < k; i++) {
-               result.Add(a.ElementAt(i).Key);
+               result.Add(a.poll());
             }
 
             return result;

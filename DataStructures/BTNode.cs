@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataStructures
 {
-    class BTNode : IComparable
+    class BTNode
     {
         private int data;
         private BTNode left, right;
@@ -731,22 +731,22 @@ namespace DataStructures
             return node;
         }
 
-        public int CompareTo(BTNode node)
-        {
-            int result;
+        //private int IComparable.CompareTo(BTNode node)
+        //{
+        //    int result;
 
-            if(data < node.Data())
-            {
-                result = -1;
-            } else if(data > node.Data())
-            {
-                result = 1;
-            } else
-            {
-                result = 0;
-            }
+        //    if(data < node.Data())
+        //    {
+        //        result = -1;
+        //    } else if(data > node.Data())
+        //    {
+        //        result = 1;
+        //    } else
+        //    {
+        //        result = 0;
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
     }
 }

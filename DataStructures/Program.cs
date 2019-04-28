@@ -13,7 +13,7 @@ namespace DataStructures
             //Merge Sort
             int[] a = { 8, 9, 2, 3, 0, 4, 1, 9 };
 
-            List<int> b = ArrayOperations.kLargest(a, 3);
+            List<int> b = ArrayOperations.kSmallest(a, 3);
 
             foreach(int s in b)
             {
