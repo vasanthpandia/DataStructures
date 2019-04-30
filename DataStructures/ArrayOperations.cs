@@ -405,5 +405,41 @@ namespace DataStructures
 
             return result;
         }
+
+        public static List<List<int>> kSumSubarrays(int[] nums, int k)
+        {
+            List<List<int>> result = new List<List<int>>();
+
+            Array.Sort(nums);
+
+            List<int> candidate = new List<int>();
+
+            backtrackkSumSubArray(0, nums.Length, nums, result, candidate, k);
+
+            return result;
+        }
+
+        public static void backtrackkSumSubArray(int bg, int end, int[] nums, List<List<int>> result, List<int> candidate, int target)
+        {
+            if(target == 0)
+            {
+                result.Add(new List<int> (candidate));
+                return;
+            }
+
+            for(int i = bg; i < end; i++)
+            {
+                if(nums[i] > target)
+                {
+                    break;
+                }
+
+                candidate.Add(nums[i]);
+
+                backtrackkSumSubArray(i + 1, end, nums, result, candidate, (target - nums[i]));
+
+                candidate.RemoveAt(candidate.Count - 1);
+            }
+        }
     }
 }

@@ -91,5 +91,38 @@ namespace DataStructures
                 len++;
             }
         }
+
+        public static void generateSubStrings(string str)
+        {
+            List<string> result = new List<string>();
+
+            string temp = "";
+
+            int k = 2;
+
+            backTrackGenSubStr(str, result, temp, 0, k);
+
+            foreach(string s in result)
+            {
+                Console.WriteLine(s);
+            }
+
+        }
+
+        public static void backTrackGenSubStr(string str, List<string> result, string s, int start, int k)
+        {
+            if(s.Length == k)
+            {
+                result.Add(new string(s.ToCharArray()));
+            }
+            for(int i = start; i < str.Length; i++)
+            {
+                s += str[i];
+                backTrackGenSubStr(str, result, s, i+1, k);
+                Console.WriteLine("Before Remove : " + s);
+                s = s.Substring(0, s.Length - 1);
+                
+            }
+        }
     }
 }

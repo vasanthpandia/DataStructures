@@ -10,15 +10,8 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            //Merge Sort
-            int[] a = { 8, 9, 2, 3, 0, 4, 1, 9 };
+            StringOperations.generateSubStrings("vasanth");
 
-            List<int> b = ArrayOperations.kSmallest(a, 3);
-
-            foreach(int s in b)
-            {
-                Console.Write("" + s + " ");
-            }
             Console.WriteLine();
             Console.ReadKey();
         }
