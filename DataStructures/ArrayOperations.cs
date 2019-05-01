@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataStructures
 {
@@ -11,31 +9,32 @@ namespace DataStructures
         public static int BinarySearch(int[] nums, int key, int start, int end)
         {
             int mid = (start + end) / 2;
-            if(nums[mid] == key)
+            if (nums[mid] == key)
             {
                 return mid;
             }
-            else if(start >= end)
+            else if (start >= end)
             {
                 return -1;
-            }    
+            }
             else if (nums[mid] > key)
             {
-               return BinarySearch(nums, key, start, mid - 1);
-            } else
+                return BinarySearch(nums, key, start, mid - 1);
+            }
+            else
             {
-               return BinarySearch(nums, key, mid + 1, end);            
-            }        
+                return BinarySearch(nums, key, mid + 1, end);
+            }
         }
 
         public static int[] mergeSorted(int[] nums1, int[] nums2)
         {
-            if(nums1.Length == 0)
+            if (nums1.Length == 0)
             {
                 return nums2;
             }
 
-            if(nums2.Length == 0)
+            if (nums2.Length == 0)
             {
                 return nums1;
             }
@@ -44,9 +43,9 @@ namespace DataStructures
 
             int i = 0, j = 0, k = 0;
 
-            while(k < result.Length && i < nums1.Length && j < nums2.Length)
+            while (k < result.Length && i < nums1.Length && j < nums2.Length)
             {
-                if(nums1[i] == nums2[j])
+                if (nums1[i] == nums2[j])
                 {
                     result[k] = nums1[i];
                     k++;
@@ -54,12 +53,14 @@ namespace DataStructures
                     result[k] = nums2[j];
                     k++;
                     j++;
-                } else if(nums1[i] < nums2[j])
+                }
+                else if (nums1[i] < nums2[j])
                 {
                     result[k] = nums1[i];
                     i++;
                     k++;
-                } else
+                }
+                else
                 {
                     result[k] = nums2[j];
                     j++;
@@ -67,12 +68,12 @@ namespace DataStructures
                 }
             }
 
-            while(i < nums1.Length && k < result.Length)
+            while (i < nums1.Length && k < result.Length)
             {
                 result[k++] = nums1[i++];
             }
 
-            while(j < nums2.Length && k < result.Length)
+            while (j < nums2.Length && k < result.Length)
             {
                 result[k++] = nums2[j++];
             }
@@ -84,27 +85,27 @@ namespace DataStructures
         {
             List<int[]> result = new List<int[]>();
 
-            for(int i = nums2.Length - 1; i >= 0; i--)
+            for (int i = nums2.Length - 1; i >= 0; i--)
             {
                 int j = nums1.Length - 1;
                 int last = nums1[j];
-                if(last < nums2[i])
+                if (last < nums2[i])
                 {
                     continue;
                 }
                 j--;
 
-                while(j >= 0)
+                while (j >= 0)
                 {
-                    if(nums2[i] >= nums1[j])
+                    if (nums2[i] >= nums1[j])
                     {
                         int k = nums1.Length - 1;
-                        while(j < k)
+                        while (j < k)
                         {
                             nums1[k] = nums1[k - 1];
                             k--;
                         }
-                        nums1[j+1] = nums2[i];
+                        nums1[j + 1] = nums2[i];
                         break;
                     }
                     j--;
@@ -123,7 +124,7 @@ namespace DataStructures
         {
             int[] products = new int[nums.Length];
 
-            for(int i = 0; i < products.Length; i++)
+            for (int i = 0; i < products.Length; i++)
             {
                 products[i] = 1;
             }
@@ -131,7 +132,7 @@ namespace DataStructures
             int temp = 1;
 
             // Find Left Products in Products Arrray
-            for(int i = 0; i < nums.Length; i++)
+            for (int i = 0; i < nums.Length; i++)
             {
                 products[i] = temp;
                 temp *= nums[i];
@@ -140,13 +141,13 @@ namespace DataStructures
             temp = 1;
 
             // Update Elements in Products array to final result
-            for(int i = nums.Length - 1; i >= 0; i--)
+            for (int i = nums.Length - 1; i >= 0; i--)
             {
                 products[i] *= temp;
                 temp *= nums[i];
             }
 
-            for(int i = 0; i < products.Length; i++)
+            for (int i = 0; i < products.Length; i++)
             {
                 Console.Write("" + products[i] + " ");
             }
@@ -158,24 +159,26 @@ namespace DataStructures
             first = 0;
             last = nums.Length - 1;
 
-            while(first < last)
+            while (first < last)
             {
                 int mid = (first + last) / 2;
 
-                if(mid > 0 && nums[mid] < nums[mid - 1])
+                if (mid > 0 && nums[mid] < nums[mid - 1])
                 {
                     return mid;
                 }
 
-                if(mid < nums.Length && nums[mid] > nums[mid + 1])
+                if (mid < nums.Length && nums[mid] > nums[mid + 1])
                 {
                     return mid + 1;
                 }
 
-                if(nums[mid] > nums[nums.Length - 1])
+                if (nums[mid] > nums[nums.Length - 1])
                 {
                     first = mid + 1;
-                } else {
+                }
+                else
+                {
                     last = mid - 1;
                 }
 
@@ -192,13 +195,15 @@ namespace DataStructures
             first = 0;
             last = nums.Length - 1;
 
-            if(nums[pivot] == target)
+            if (nums[pivot] == target)
             {
                 return pivot;
-            } else if(target < nums[nums.Length - 1])
+            }
+            else if (target < nums[nums.Length - 1])
             {
                 return BinarySearch(nums, target, pivot + 1, last);
-            } else if(target > nums[nums.Length - 1])
+            }
+            else if (target > nums[nums.Length - 1])
             {
                 return BinarySearch(nums, target, first, pivot - 1);
             }
@@ -248,9 +253,9 @@ namespace DataStructures
 
             int storeindex = left;
 
-            for(int i = left; i < right; i++)
+            for (int i = left; i < right; i++)
             {
-                if(nums[i] < pivot)
+                if (nums[i] < pivot)
                 {
                     swap(nums, i, storeindex);
                     storeindex++;
@@ -271,7 +276,7 @@ namespace DataStructures
 
         public static double medianOfSorted(int[] nums1, int[] nums2)
         {
-            if(nums1.Length > nums2.Length)
+            if (nums1.Length > nums2.Length)
             {
                 return medianOfSorted(nums2, nums1);
             }
@@ -284,7 +289,7 @@ namespace DataStructures
 
             int halflen = (x + y + 1) / 2;
 
-            while(low <= high)
+            while (low <= high)
             {
                 int partitionX = (low + high) / 2;
                 int partitionY = halflen - partitionX;
@@ -295,19 +300,22 @@ namespace DataStructures
                 int maxLeftY = (partitionY <= 0) ? Int32.MinValue : nums2[partitionY - 1];
                 int minRightY = (partitionY == y) ? Int32.MaxValue : nums2[partitionY];
 
-                if(maxLeftX <= minRightY && maxLeftY <= minRightX)
+                if (maxLeftX <= minRightY && maxLeftY <= minRightX)
                 {
-                    if((x+y) % 2 == 0)
+                    if ((x + y) % 2 == 0)
                     {
                         return (double)(Math.Max(maxLeftX, maxLeftY) + Math.Min(minRightX, minRightY)) / 2;
-                    } else
+                    }
+                    else
                     {
                         return (double)Math.Max(maxLeftX, maxLeftY);
                     }
-                } else if(maxLeftX > minRightY)
+                }
+                else if (maxLeftX > minRightY)
                 {
                     high = partitionX - 1;
-                } else
+                }
+                else
                 {
                     low = partitionX + 1;
                 }
@@ -322,16 +330,16 @@ namespace DataStructures
         {
             List<int> resultList = new List<int>();
 
-            if(nums == null || nums.Length == 0)
+            if (nums == null || nums.Length == 0)
             {
                 return resultList.ToArray();
             }
 
             resultList.Add(nums[0]);
 
-            for(int i = 1; i < nums.Count(); i++)
+            for (int i = 1; i < nums.Count(); i++)
             {
-                if(nums[i] != nums[i-1])
+                if (nums[i] != nums[i - 1])
                 {
                     resultList.Add(nums[i]);
                 }
@@ -345,7 +353,7 @@ namespace DataStructures
         public static int[] mergeSort(int[] nums)
         {
             int n = nums.Length;
-            if(n < 2)
+            if (n < 2)
             {
                 return nums;
             }
@@ -355,12 +363,12 @@ namespace DataStructures
             int[] l = new int[mid];
             int[] r = new int[n - mid];
 
-            for(int i = 0; i < mid; i++)
+            for (int i = 0; i < mid; i++)
             {
                 l[i] = nums[i];
             }
 
-            for(int i = mid; i < n; i++)
+            for (int i = mid; i < n; i++)
             {
                 r[i - mid] = nums[i];
             }
@@ -394,13 +402,14 @@ namespace DataStructures
             List<int> result = new List<int>();
             PriorityQueue<int> a = new PriorityQueue<int>();
 
-            foreach(int i in nums)
+            foreach (int i in nums)
             {
                 a.Add(i);
             }
 
-            for(int i = 0; i < k; i++) {
-               result.Add(a.poll());
+            for (int i = 0; i < k; i++)
+            {
+                result.Add(a.poll());
             }
 
             return result;
@@ -421,15 +430,15 @@ namespace DataStructures
 
         public static void backtrackkSumSubArray(int bg, int end, int[] nums, List<List<int>> result, List<int> candidate, int target)
         {
-            if(target == 0)
+            if (target == 0)
             {
-                result.Add(new List<int> (candidate));
+                result.Add(new List<int>(candidate));
                 return;
             }
 
-            for(int i = bg; i < end; i++)
+            for (int i = bg; i < end; i++)
             {
-                if(nums[i] > target)
+                if (nums[i] > target)
                 {
                     break;
                 }
@@ -439,6 +448,70 @@ namespace DataStructures
                 backtrackkSumSubArray(i + 1, end, nums, result, candidate, (target - nums[i]));
 
                 candidate.RemoveAt(candidate.Count - 1);
+            }
+        }
+
+        public static List<int> mergeKSortedArrays(List<List<int>> lists)
+        {
+            List<int> result = new List<int>();
+
+            PriorityQueue<PQIElement> kListQueue = new PriorityQueue<PQIElement>();
+
+            for (int i = 0; i < lists.Count; i++)
+            {
+                PQIElement pqe = new PQIElement(lists[i][0], 1, i);
+                kListQueue.Add(pqe);
+            }
+
+            while(kListQueue.Peek().data != Int32.MaxValue)
+            {
+                PQIElement top = kListQueue.Peek();
+                result.Add(top.data);
+
+                if(top.element_id < lists[top.arr_id].Count)
+                {
+                    top.data = lists[top.arr_id][top.element_id];
+                    top.element_id += 1;
+                } else
+                {
+                    top.data = Int32.MaxValue;
+                }
+
+                kListQueue.heapifyDown();
+            }
+
+            return result;
+        }
+
+        class PQIElement : IComparable
+        {
+            public int data { get; set; }
+            public int element_id { get; set; }
+            public int arr_id { get; set; }
+
+            public PQIElement(int a, int b, int c)
+            {
+                data = a;
+                element_id = b;
+                arr_id = c;
+            }
+
+            public int CompareTo(object obj)
+            {
+                int result;
+
+                if(data > ((PQIElement)obj).data)
+                {
+                    result = 1;
+                } else if(data < ((PQIElement)obj).data)
+                {
+                    result = -1;
+                } else
+                {
+                    result = 0;
+                }
+
+                return result;
             }
         }
     }

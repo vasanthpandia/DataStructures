@@ -70,7 +70,7 @@ namespace DataStructures
             data[fromIndex] = temp;
         }
 
-        private void heapifyDown()
+        public void heapifyDown()
         {
             int index = 0;
 
