@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataStructures
 {
@@ -314,7 +312,7 @@ namespace DataStructures
             int lheight = BTNode.height(node.Left());
             int rheight = BTNode.height(node.Right());
 
-            int result_height = (lheight > rheight) ? (lheight + 1) : (rheight + 1);
+            int result_height = Math.Max(lheight, rheight) + 1;
 
             return result_height;
         }
@@ -733,7 +731,22 @@ namespace DataStructures
 
         public int CompareTo(object obj)
         {
-            return data.CompareTo(obj);
+            int result;
+
+            if (data > ((BTNode)obj).data)
+            {
+                result = 1;
+            }
+            else if (data < ((BTNode)obj).data)
+            {
+                result = -1;
+            }
+            else
+            {
+                result = 0;
+            }
+
+            return result;
         }
     }
 }
