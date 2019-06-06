@@ -15,6 +15,11 @@ namespace DataStructures
         {
             return head;
         }
+
+        public LinkedList()
+        {
+            head = null;
+        }
         
         public LinkedList(int a)
         {

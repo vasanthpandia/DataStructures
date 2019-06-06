@@ -379,24 +379,6 @@ namespace DataStructures
             return mergeSorted(l, r);
         }
 
-        // Backtracking
-
-        //public static List<List<int>> generateAllSubArrays(int[] nums)
-        //{
-
-        //    //return nums;
-        //}
-
-        //public static List<List<int>> backTrack(int[] nums, int start, int size, List<int> current, List<List<int>> result)
-        //{
-        //    if(start == size)
-        //    {
-        //        result.Add(current);
-        //        return result;
-        //    }
-
-        //}
-
         public static List<int> kSmallest(int[] nums, int k)
         {
             List<int> result = new List<int>();
@@ -468,10 +450,10 @@ namespace DataStructures
                 PQIElement top = kListQueue.Peek();
                 result.Add(top.data);
 
-                if(top.element_id < lists[top.arr_id].Count)
+                if(top.n_element_id < lists[top.arr_id].Count)
                 {
-                    top.data = lists[top.arr_id][top.element_id];
-                    top.element_id += 1;
+                    top.data = lists[top.arr_id][top.n_element_id];
+                    top.n_element_id += 1;
                 } else
                 {
                     top.data = Int32.MaxValue;
@@ -486,13 +468,13 @@ namespace DataStructures
         class PQIElement : IComparable
         {
             public int data { get; set; }
-            public int element_id { get; set; }
+            public int n_element_id { get; set; }
             public int arr_id { get; set; }
 
             public PQIElement(int a, int b, int c)
             {
                 data = a;
-                element_id = b;
+                n_element_id = b;
                 arr_id = c;
             }
 
@@ -513,6 +495,32 @@ namespace DataStructures
 
                 return result;
             }
+        }
+
+        public static int[] NextGreatest(int[] nums)
+        {
+            if (nums == null || nums.Length == 0) return nums;
+
+            int[] result = new int[nums.Length]; 
+            Stack<int> st = new Stack<int>();
+
+            for(int i = nums.Length - 1; i >= 0; i--)
+            {
+
+                if(st.Count != 0)
+                {
+                    while(st.Count != 0 && nums[i] >= st.Peek())
+                    {
+                        st.Pop();
+                    }
+                }
+
+                result[i] = st.Count != 0 ? st.Peek() : nums[i];
+
+                st.Push(nums[i]);
+            }
+
+            return result;
         }
     }
 }

@@ -10,24 +10,35 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            StringOperations.generateSubStrings("vasanth");
+            //StringOperations.generateSubStrings("vasanth");
 
-            List<int> a = new List<int>() { 2, 4, 6 };
-            List<int> b = new List<int>() { 1, 3, 5, 21 };
-            List<int> c = new List<int>() { 8, 9, 10 };
+            //List<int> a = new List<int>() { 2, 4, 6 };
+            //List<int> b = new List<int>() { 1, 3, 5, 21 };
+            //List<int> c = new List<int>() { 8, 9, 10 };
 
-            List<List<int>> lists = new List<List<int>>();
+            //List<List<int>> lists = new List<List<int>>();
 
-            lists.Add(a);
-            lists.Add(b);
-            lists.Add(c);
+            //lists.Add(a);
+            //lists.Add(b);
+            //lists.Add(c);
 
-            List<int> d = ArrayOperations.mergeKSortedArrays(lists);
+            //List<int> d = ArrayOperations.mergeKSortedArrays(lists);
 
-            foreach(int i in d)
-            {
-                Console.Write("" + i + " ");
-            }
+            //foreach (int i in d)
+            //{
+            //    Console.Write("" + i + " ");
+            //}
+
+            StringOperations.LongestPalindromicSubstring("banaana");
+
+            //int[] a = { 4, 5, 1, 3, 2 };
+
+            //int[] b = ArrayOperations.NextGreatest(a);
+
+            //foreach(int s in b)
+            //{
+            //    Console.Write("" + s + " ");
+            //}
 
             Console.WriteLine();
             Console.ReadKey();

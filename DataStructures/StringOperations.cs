@@ -124,5 +124,34 @@ namespace DataStructures
                 
             }
         }
+
+        // Longest Palindrome - Expand Around Center
+
+        public static void LongestPalindromicSubstring(string str)
+        {
+            Console.WriteLine("Input string is : " + str);
+            string res = "";
+
+            for(int i = 0; i < str.Length; i++)
+            {
+                string temp = ExpandAroundCenter(str, i, i);
+                string temp1 = ExpandAroundCenter(str, i, i + 1);
+                string result = temp1.Length > temp.Length ? temp1 : temp;
+                res = res.Length > result.Length ? res : result;
+            }
+
+            Console.Write(res);
+        }
+
+        public static string ExpandAroundCenter(string str, int s, int e)
+        {
+            while(s >= 0 && e < str.Length && str[s] == str[e])
+            {
+                s--;
+                e++;
+            }
+
+            return str.Substring(s + 1, e - s - 1);
+        }
     }
 }
