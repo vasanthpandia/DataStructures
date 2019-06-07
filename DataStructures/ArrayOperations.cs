@@ -522,5 +522,106 @@ namespace DataStructures
 
             return result;
         }
+
+        public static int compareElements(int num1, int num2)
+        {
+            if (num1 > num2)
+            {
+                return 1;
+            }
+            else if (num1 < num2)
+            {
+                return -1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public static void findIntersectingIntervals(int[,] nums = null)
+        {
+            int[,] a; // Input
+            if (nums == null) {
+                int[,] temp = { { 1, 5 }, { 2, 4 }, { 2, 7 }, { 3, 5 }, { 2, 5 }, { 1, 4 }, { 10, 15 }, { 11, 13 } };
+                a = temp;
+            } else
+            {
+                a = nums;
+            }
+
+            List<int[]> l1 = new List<int[]>();
+
+            for(int i = 0; i < a.GetLength(0); i++) // Convert 2-D Array to a List
+            {
+                int[] temp = new int[a.GetLength(1)];
+                for(int j = 0; j < temp.Length; j++)
+                {
+                    temp[j] = a[i, j];
+                }
+
+                l1.Add(temp);
+            }
+
+            List<List<int[]>> result = new List<List<int[]>>(); // List of Lists for Output - for overlapping intervals
+
+            foreach (int[] s in l1) // Original Intervals
+            {
+                Console.WriteLine("" + s[0] + " : " + s[1]);
+            }
+
+            Console.WriteLine("\n ====== \n");
+
+            l1.Sort((x, y) => x[0].CompareTo(y[0]));
+
+            foreach(int[] s in l1) // Sorted Intervals
+            {
+                Console.WriteLine("" + s[0] + " : " + s[1]); 
+            }
+
+            Console.WriteLine("=====");
+
+            for(int i = 0; i < l1.Count - 1; i++)
+            {
+                int[] current = l1[i];
+
+                List<int[]> res = new List<int[]>();
+                int start = current[0];
+                int end = current[1];
+                res.Add(current);
+
+                for(int j = i + 1; j < l1.Count; j++)
+                {
+                    if(l1[j][0] > end)
+                    {
+                        i = j - 1;
+                        break;
+                    }
+
+                    if(l1[j][0] >= start)
+                    {
+                        res.Add(l1[j]);
+                        if(l1[j][1] > end)
+                        {
+                            end = l1[j][1];
+                        }
+                    }
+
+                    i = j;
+                }
+
+                result.Add(res);
+            }
+
+            foreach(List<int[]> b in result)
+            {
+                foreach(int[] c in b)
+                {
+                    Console.WriteLine("" + c[0] + " : " + c[1]);
+                }
+
+                Console.WriteLine("=======");
+            }
+        }
     }
 }

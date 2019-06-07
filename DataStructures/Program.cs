@@ -29,7 +29,9 @@ namespace DataStructures
             //    Console.Write("" + i + " ");
             //}
 
-            StringOperations.LongestPalindromicSubstring("banaana");
+            //StringOperations.LongestPalindromicSubstring("banaana");
+
+            ArrayOperations.findIntersectingIntervals();
 
             //int[] a = { 4, 5, 1, 3, 2 };
 
