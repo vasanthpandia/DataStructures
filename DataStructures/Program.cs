@@ -31,7 +31,8 @@ namespace DataStructures
 
             //StringOperations.LongestPalindromicSubstring("banaana");
 
-            ArrayOperations.findIntersectingIntervals();
+            //ArrayOperations.findIntersectingIntervals();
+            ArrayOperations.findMaxProfit2();
 
             //int[] a = { 4, 5, 1, 3, 2 };
 

@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="ArrayOperations.cs" />
     <Compile Include="BTNode.cs" />
+    <Compile Include="Event.cs" />
     <Compile Include="LinkedList.cs" />
     <Compile Include="ListNode.cs" />
     <Compile Include="LRUCache.cs" />

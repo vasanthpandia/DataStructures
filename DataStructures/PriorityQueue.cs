@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataStructures
 {
-    class PriorityQueue<T> where T : IComparable 
+    class PriorityQueue<T> where T : IComparable
     {
         private List<T> data;
 
@@ -55,11 +52,6 @@ namespace DataStructures
         private T getParent(int index)
         {
             return data[getParentIndex(index)];
-        }
-
-        private int Compare(T item1, T item2)
-        {
-            return 0;
         }
 
         // Swap elements

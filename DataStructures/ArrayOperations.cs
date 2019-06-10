@@ -6,6 +6,19 @@ namespace DataStructures
 {
     class ArrayOperations
     {
+        public class Job
+        {
+            public int start;
+            public int end;
+            public int profit;
+            public Job(int s, int e, int p)
+            {
+                start = s;
+                end = e;
+                profit = p;
+            }
+        }
+
         public static int BinarySearch(int[] nums, int key, int start, int end)
         {
             int mid = (start + end) / 2;
@@ -445,16 +458,17 @@ namespace DataStructures
                 kListQueue.Add(pqe);
             }
 
-            while(kListQueue.Peek().data != Int32.MaxValue)
+            while (kListQueue.Peek().data != Int32.MaxValue)
             {
                 PQIElement top = kListQueue.Peek();
                 result.Add(top.data);
 
-                if(top.n_element_id < lists[top.arr_id].Count)
+                if (top.n_element_id < lists[top.arr_id].Count)
                 {
                     top.data = lists[top.arr_id][top.n_element_id];
                     top.n_element_id += 1;
-                } else
+                }
+                else
                 {
                     top.data = Int32.MaxValue;
                 }
@@ -482,13 +496,15 @@ namespace DataStructures
             {
                 int result;
 
-                if(data > ((PQIElement)obj).data)
+                if (data > ((PQIElement)obj).data)
                 {
                     result = 1;
-                } else if(data < ((PQIElement)obj).data)
+                }
+                else if (data < ((PQIElement)obj).data)
                 {
                     result = -1;
-                } else
+                }
+                else
                 {
                     result = 0;
                 }
@@ -501,15 +517,15 @@ namespace DataStructures
         {
             if (nums == null || nums.Length == 0) return nums;
 
-            int[] result = new int[nums.Length]; 
+            int[] result = new int[nums.Length];
             Stack<int> st = new Stack<int>();
 
-            for(int i = nums.Length - 1; i >= 0; i--)
+            for (int i = nums.Length - 1; i >= 0; i--)
             {
 
-                if(st.Count != 0)
+                if (st.Count != 0)
                 {
-                    while(st.Count != 0 && nums[i] >= st.Peek())
+                    while (st.Count != 0 && nums[i] >= st.Peek())
                     {
                         st.Pop();
                     }
@@ -523,39 +539,25 @@ namespace DataStructures
             return result;
         }
 
-        public static int compareElements(int num1, int num2)
-        {
-            if (num1 > num2)
-            {
-                return 1;
-            }
-            else if (num1 < num2)
-            {
-                return -1;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-
         public static void findIntersectingIntervals(int[,] nums = null)
         {
             int[,] a; // Input
-            if (nums == null) {
+            if (nums == null)
+            {
                 int[,] temp = { { 1, 5 }, { 2, 4 }, { 2, 7 }, { 3, 5 }, { 2, 5 }, { 1, 4 }, { 10, 15 }, { 11, 13 } };
                 a = temp;
-            } else
+            }
+            else
             {
                 a = nums;
             }
 
             List<int[]> l1 = new List<int[]>();
 
-            for(int i = 0; i < a.GetLength(0); i++) // Convert 2-D Array to a List
+            for (int i = 0; i < a.GetLength(0); i++) // Convert 2-D Array to a List
             {
                 int[] temp = new int[a.GetLength(1)];
-                for(int j = 0; j < temp.Length; j++)
+                for (int j = 0; j < temp.Length; j++)
                 {
                     temp[j] = a[i, j];
                 }
@@ -574,14 +576,14 @@ namespace DataStructures
 
             l1.Sort((x, y) => x[0].CompareTo(y[0]));
 
-            foreach(int[] s in l1) // Sorted Intervals
+            foreach (int[] s in l1) // Sorted Intervals
             {
-                Console.WriteLine("" + s[0] + " : " + s[1]); 
+                Console.WriteLine("" + s[0] + " : " + s[1]);
             }
 
             Console.WriteLine("=====");
 
-            for(int i = 0; i < l1.Count - 1; i++)
+            for (int i = 0; i < l1.Count - 1; i++)
             {
                 int[] current = l1[i];
 
@@ -590,18 +592,18 @@ namespace DataStructures
                 int end = current[1];
                 res.Add(current);
 
-                for(int j = i + 1; j < l1.Count; j++)
+                for (int j = i + 1; j < l1.Count; j++)
                 {
-                    if(l1[j][0] > end)
+                    if (l1[j][0] > end)
                     {
                         i = j - 1;
                         break;
                     }
 
-                    if(l1[j][0] >= start)
+                    if (l1[j][0] >= start)
                     {
                         res.Add(l1[j]);
-                        if(l1[j][1] > end)
+                        if (l1[j][1] > end)
                         {
                             end = l1[j][1];
                         }
@@ -613,9 +615,9 @@ namespace DataStructures
                 result.Add(res);
             }
 
-            foreach(List<int[]> b in result)
+            foreach (List<int[]> b in result)
             {
-                foreach(int[] c in b)
+                foreach (int[] c in b)
                 {
                     Console.WriteLine("" + c[0] + " : " + c[1]);
                 }
@@ -623,5 +625,119 @@ namespace DataStructures
                 Console.WriteLine("=======");
             }
         }
+
+        public static void findMaxProfit(int[,] a = null)
+        {
+            int[,] jobarray; // Input
+            if (a == null)
+            {
+                //int[,] temp = { { 1, 5, 10 }, { 2, 4, 6 }, { 2, 7, 15 }, { 3, 5, 12 }, { 2, 5, 16 }, { 1, 4, 10 }, { 10, 15, 35 }, { 11, 13, 45 } };
+                int[,] temp = { { 3, 10, 20 }, { 1, 2, 50 }, { 6, 19, 100 }, { 2, 100, 200 } };
+                jobarray = temp;
+            }
+            else
+            {
+                jobarray = a;
+            }
+            List<Job> jobs = new List<Job>();
+
+            for (int i = 0; i < jobarray.GetLength(0); i++)
+            {
+                Job j = new Job(jobarray[i, 0], jobarray[i, 1], jobarray[i, 2]);
+                jobs.Add(j);
+            }
+
+            jobs.Sort((x, y) => x.end.CompareTo(y.end));
+
+            int[] table = new int[jobs.Count];
+
+            table[0] = jobs[0].profit;
+
+            for (int i = 1; i < jobs.Count; i++)
+            {
+                int inclProfit = jobs[i].profit;
+                int l = latestNonConflict(jobs, i);
+                if (l != -1)
+                {
+                    inclProfit += table[l];
+                }
+
+                table[i] = Math.Max(inclProfit, table[i - 1]);
+            }
+
+            Console.WriteLine("Max profit is : " + table[jobs.Count - 1]);
+
+        }
+
+        public static int latestNonConflict(List<Job> arr, int i)
+        {
+            for (int j = i - 1; j >= 0; j--)
+            {
+                if (arr[j].end <= arr[i].start)
+                    return j;
+            }
+            return -1;
+        }
+
+        public static int binarySearchJobs(List<Job> jobs, int index)
+        {
+            int lo = 0;
+            int high = index - 1;
+
+            while (lo <= high)
+            {
+                int mid = (lo + high) / 2;
+                if (jobs[mid].end <= jobs[index].start)
+                {
+                    if (jobs[mid + 1].end <= jobs[index].start)
+                    {
+                        lo = mid + 1;
+                    }
+                    else
+                    {
+                        return mid;
+                    }
+                }
+                else
+                {
+                    high = mid - 1;
+                }
+            }
+
+            return -1;
+        }
+
+        public static void findMaxProfit2()
+        {
+            int[,] jobarray = { { 3, 10, 20 }, { 1, 2, 50 }, { 6, 19, 100 }, { 2, 100, 200 } };
+            List<Job> jobs = new List<Job>();
+
+            for (int i = 0; i < jobarray.GetLength(0); i++)
+            {
+                Job j = new Job(jobarray[i, 0], jobarray[i, 1], jobarray[i, 2]);
+                jobs.Add(j);
+            }
+
+            jobs.Sort((x, y) => x.end.CompareTo(y.end));
+
+            int n = jobs.Count;
+            int[] table = new int[n];
+            table[0] = jobs[0].profit;
+
+            for (int i = 1; i < jobs.Count; i++)
+            {
+                int inclProfit = jobs[i].profit;
+                int l = binarySearchJobs(jobs, i);
+                if (l != -1)
+                {
+                    inclProfit += table[l];
+                }
+
+                table[i] = Math.Max(inclProfit, table[i - 1]);
+            }
+
+            Console.WriteLine("MaxProfit from 2 : " + table[n - 1]);
+        }
+
     }
 }
