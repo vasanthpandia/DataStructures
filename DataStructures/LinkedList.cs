@@ -68,6 +68,7 @@ namespace DataStructures
             Node prev, start, runner;
             start = runner = head;
             prev = null;
+            Console.WriteLine("Nth Node removal");
 
             for (int i = 1; i <= n; i++)
             {
