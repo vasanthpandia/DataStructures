@@ -153,5 +153,46 @@ namespace DataStructures
 
             return str.Substring(s + 1, e - s - 1);
         }
+
+        public static int CompareVersions(string version1, string version2)
+        {
+            string[] versions1 = version1.Split('.');
+            string[] versions2 = version2.Split('.');
+
+            int i = 0, j = 0;
+
+            while(i < versions1.Length && j < versions2.Length)
+            {
+                int v1 = int.Parse(versions1[i]);
+                int v2 = int.Parse(versions2[j]);
+
+                if (v1 == v2)
+                {
+                    i++;
+                    j++;
+                } else if (v1 > v2) return -1;
+                else return 1;
+            }
+
+            if (i < versions1.Length && j == versions2.Length)
+            {
+                while (i < versions1.Length)
+                {
+                    if (int.Parse(versions1[i]) > 0) return -1;
+                    i++;
+                }
+            }
+
+            if (i == versions1.Length && j < versions2.Length)
+            {
+                while (j < versions2.Length)
+                {
+                    if (int.Parse(versions2[j]) > 0) return 1;
+                    j++;
+                }
+            }
+
+            return 0;
+        }
     }
 }

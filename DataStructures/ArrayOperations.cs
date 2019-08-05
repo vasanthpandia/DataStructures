@@ -19,6 +19,18 @@ namespace DataStructures
             }
         }
 
+        public class DJob
+        {
+            public int deadline;
+            public int profit;
+
+            public DJob(int p, int d)
+            {
+                profit = p;
+                deadline = d;
+            }
+        }
+
         public static int BinarySearch(int[] nums, int key, int start, int end)
         {
             int mid = (start + end) / 2;
@@ -737,6 +749,47 @@ namespace DataStructures
             }
 
             Console.WriteLine("MaxProfit from 2 : " + table[n - 1]);
+        }
+
+        public static void findMaxProfitWithDeadLine()
+        {
+            int[,] jobarray = { { 1, 3 }, { 15, 2 }, { 10, 1 }, { 5, 3 }, { 7, 2 } };
+
+            List<DJob> jobs = new List<DJob>();
+
+            for(int i = 0; i < jobarray.GetLength(0); i++)
+            {
+                DJob temp = new DJob(jobarray[i, 0], jobarray[i, 1]);
+                jobs.Add(temp);
+            }
+
+            jobs.Sort((x, y) => -1 * x.profit.CompareTo(y.profit));
+
+            int n = jobs.Count;
+            int[] result = new int[n];
+            bool[] slots = new bool[n];
+
+            for(int i = 0; i < n; i++)
+            {
+                for(int j = Math.Min(n, jobs[i].deadline); j >= 0; j--)
+                {
+                    if(!slots[j])
+                    {
+                        result[j] = i;
+                        slots[j] = true;
+                        break;
+                    }
+                }
+            }
+
+            for(int i = 0; i < n; i++)
+            {
+                if(slots[i])
+                {
+                    DJob job = jobs[i];
+                    Console.WriteLine("Job i : " + i + " : deadline : " + job.deadline + " : profit : " + job.profit);
+                }
+            }
         }
 
     }
