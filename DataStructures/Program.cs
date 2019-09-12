@@ -32,7 +32,8 @@ namespace DataStructures
             //StringOperations.LongestPalindromicSubstring("banaana");
 
             //ArrayOperations.findIntersectingIntervals();
-            ArrayOperations.findMaxProfit2();
+            //ArrayOperations.findMaxProfit2();
+            //ArrayOperations.findMaxProfitWithDeadLine();
 
             //int[] a = { 4, 5, 1, 3, 2 };
 
@@ -43,8 +44,29 @@ namespace DataStructures
             //    Console.Write("" + s + " ");
             //}
 
+            compareVersions();
+
             Console.WriteLine();
             Console.ReadKey();
+        }
+
+        static void compareVersions()
+        {
+            string v1 = "1";
+            string v2 = "1.0.1";
+
+            int x = StringOperations.CompareVersions(v1, v2);
+
+            if (x == 0)
+            {
+                Console.WriteLine("Both versions are the same");
+            } else if(x == -1)
+            {
+                Console.WriteLine(v1);
+            } else
+            {
+                Console.WriteLine(v2);
+            }
         }
 
         static void runLLOperations()
