@@ -844,7 +844,7 @@ namespace DataStructures
         {
             if (root == null) return 0;
 
-            int nodesum = root.val;
+            int nodesum = root.data;
 
             int leftsum = Math.Max(max_gain(root.left), 0);
             int rightsum = Math.Max(max_gain(root.right), 0);
@@ -852,7 +852,7 @@ namespace DataStructures
             int totalsum = leftsum + nodesum + rightsum;
             max_sum = Math.Max(max_sum, totalsum);
 
-            return root.val + Math.Max(leftsum, rightsum);
+            return root.data + Math.Max(leftsum, rightsum);
         }
 
         public int MaxPathSum(BTNode root)
