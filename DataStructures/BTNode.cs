@@ -748,5 +748,41 @@ namespace DataStructures
 
             return result;
         }
+
+        public int KthSmallest(BTNode root, int k)
+        {
+            Stack<BTNode> st = new Stack<BTNode>();
+
+            BTNode tn = root;
+            int res = 0, count;
+            count = 0;
+
+            do
+            {
+                st.Push(tn);
+                tn = tn.left;
+            } while (tn != null);
+
+            while (st.Count > 0)
+            {
+                tn = st.Pop();
+                count++;
+                if (count == k)
+                {
+                    res = tn.data;
+                    break;
+                }
+                if (tn.right != null)
+                {
+                    tn = tn.right;
+                    while (tn != null)
+                    {
+                        st.Push(tn);
+                        tn = tn.left;
+                    }
+                }
+            }
+            return tn.data;
+        }
     }
 }
