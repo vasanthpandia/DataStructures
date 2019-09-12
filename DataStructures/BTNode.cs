@@ -349,7 +349,61 @@ namespace DataStructures
 
         }
 
-        public static void printLevelOrderZigZag(BTNode node)
+        public IList<IList<int>> ZigzagLevelOrder(BTNode root)
+        {
+            IList<IList<int>> res = new List<IList<int>>();
+            if (root == null) return res;
+
+            Queue<BTNode> currLevel = new Queue<BTNode>();
+
+
+            bool reverse = false;
+            currLevel.Enqueue(root);
+
+            while (currLevel.Count > 0)
+            {
+                IList<int> level = new List<int>();
+
+                int qsize = currLevel.Count;
+
+                while (qsize > 0)
+                {
+                    BTNode n = currLevel.Dequeue();
+                    qsize--;
+
+                    if (reverse)
+                    {
+                        level.Insert(0, n.data);
+                    }
+                    else
+                    {
+                        level.Add(n.data);
+                    }
+
+                    if (n.left != null)
+                    {
+                        currLevel.Enqueue(n.left);
+                    }
+
+                    if (n.right != null)
+                    {
+                        currLevel.Enqueue(n.right);
+                    }
+                }
+
+                if (qsize == 0)
+                {
+                    reverse = !reverse;
+                }
+
+                res.Add(level);
+            }
+
+            return res;
+
+        }
+
+        public static void printLevelOrderZigZag(BTNode node) // 2 Stacks
         {
             Stack<BTNode> currentlevel = new Stack<BTNode>();
             Stack<BTNode> nextLevel = new Stack<BTNode>();
