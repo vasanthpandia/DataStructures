@@ -838,5 +838,27 @@ namespace DataStructures
             }
             return tn.data;
         }
+
+        public int max_sum = int.MinValue;
+        public int max_gain(BTNode root)
+        {
+            if (root == null) return 0;
+
+            int nodesum = root.val;
+
+            int leftsum = Math.Max(max_gain(root.left), 0);
+            int rightsum = Math.Max(max_gain(root.right), 0);
+
+            int totalsum = leftsum + nodesum + rightsum;
+            max_sum = Math.Max(max_sum, totalsum);
+
+            return root.val + Math.Max(leftsum, rightsum);
+        }
+
+        public int MaxPathSum(BTNode root)
+        {
+            max_gain(root);
+            return max_sum;
+        }
     }
 }
