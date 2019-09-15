@@ -10,42 +10,7 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            //StringOperations.generateSubStrings("vasanth");
-
-            //List<int> a = new List<int>() { 2, 4, 6 };
-            //List<int> b = new List<int>() { 1, 3, 5, 21 };
-            //List<int> c = new List<int>() { 8, 9, 10 };
-
-            //List<List<int>> lists = new List<List<int>>();
-
-            //lists.Add(a);
-            //lists.Add(b);
-            //lists.Add(c);
-
-            //List<int> d = ArrayOperations.mergeKSortedArrays(lists);
-
-            //foreach (int i in d)
-            //{
-            //    Console.Write("" + i + " ");
-            //}
-
-            //StringOperations.LongestPalindromicSubstring("banaana");
-
-            //ArrayOperations.findIntersectingIntervals();
-            //ArrayOperations.findMaxProfit2();
-            //ArrayOperations.findMaxProfitWithDeadLine();
-
-            //int[] a = { 4, 5, 1, 3, 2 };
-
-            //int[] b = ArrayOperations.NextGreatest(a);
-
-            //foreach(int s in b)
-            //{
-            //    Console.Write("" + s + " ");
-            //}
-
-            compareVersions();
-
+            // Add Method call to any algorithm
             Console.WriteLine();
             Console.ReadKey();
         }
@@ -66,6 +31,15 @@ namespace DataStructures
             } else
             {
                 Console.WriteLine(v2);
+            }
+        }
+
+        static void printchars()
+        {
+            char[] s = new char[5];
+            foreach(char c in s)
+            {
+                Console.WriteLine(c);
             }
         }
 
