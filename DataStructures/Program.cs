@@ -8,10 +8,20 @@ namespace DataStructures
 {
     class Program
     {
+        enum Day { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday };
+        enum Month : byte { Jan = 1, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec };
+
         static void Main(string[] args)
         {
-            // Add Method call to any algorithm
-            Console.WriteLine();
+            MyObj ob1 = new MyObj();
+            ob1.a = 25;
+            ob1.b = "Hello";
+            MyObj ob2 = new MyObj();
+            ob2.a = 25;
+            ob2.b = "Hello";
+            Console.WriteLine(ob1.Equals(ob2));
+            Console.WriteLine(ob1.GetHashCode());
+            Console.WriteLine(ob2.GetHashCode());
             Console.ReadKey();
         }
 
