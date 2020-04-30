@@ -13,15 +13,11 @@ namespace DataStructures
 
         static void Main(string[] args)
         {
-            MyObj ob1 = new MyObj();
-            ob1.a = 25;
-            ob1.b = "Hello";
-            MyObj ob2 = new MyObj();
-            ob2.a = 25;
-            ob2.b = "Hello";
-            Console.WriteLine(ob1.Equals(ob2));
-            Console.WriteLine(ob1.GetHashCode());
-            Console.WriteLine(ob2.GetHashCode());
+            //int[] a = { 1, 4, 5, 7, 12, 16, 19, 24, 33 };
+            //int key = 24;
+            //int searchIndex = ArrayOperations.BinarySearchRecursive(a, key);
+            //Console.WriteLine("The value is : " + searchIndex);
+            sortBArray();
             Console.ReadKey();
         }
 
@@ -345,6 +341,73 @@ namespace DataStructures
             while(heap.Size() > 0)
             {
                 Console.Write("" + heap.poll() + " ");
+            }
+        }
+
+        static void runCombiSum()
+        {
+            int[] a = { 3, 7, 2, 6, 4, 5 };
+
+            List<List<int>> res = combinationSum(a, 11);
+
+            foreach(List<int> list in res)
+            {
+                foreach(int n in list)
+                {
+                    Console.Write("" + n + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        static List<List<int>> combinationSum(int[] a, int target)
+        {
+            List<List<int>> result = new List<List<int>>();
+            Array.Sort(a);
+            combinationSum(a, 0, target, new List<int>(), result);
+            return result;
+        }
+
+        static void combinationSum(int[] a, int start, int target, List<int> res, List<List<int>> result)
+        {
+            if(target == 0)
+            {
+                result.Add(new List<int>(res));
+                return;
+            } else if(target < 0)
+            {
+                return;
+            }
+
+            for(int i = start; i < a.Length; i++)
+            {
+                if(i == start || a[i] != a[i - 1])
+                {
+                    res.Add(a[i]);
+                    combinationSum(a, i + 1, target - a[i], res, result);
+                    res.RemoveAt(res.Count - 1);
+                }
+                
+            }
+
+            return;
+        }
+
+        //static string multiplyWords()
+
+        static void sortBArray()
+        {
+            int[] a = { 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1 };
+            foreach(int i in a)
+            {
+                Console.Write("" + i + " ");
+            }
+            Console.WriteLine();
+
+            sortBinaryArray.sort(a);
+            foreach(int i in a)
+            {
+                Console.Write("" + i + " ");
             }
         }
     }

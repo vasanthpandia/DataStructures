@@ -52,6 +52,34 @@ namespace DataStructures
             }
         }
 
+        // Binary Search - Iterative
+        public static int BinarySearchIterative(int[] nums, int key)
+        {
+            if (nums == null || nums.Length == 0) return -1;
+            int start = 0;
+            int end = nums.Length - 1;
+
+            while(start < end)
+            {
+                int mid = start + (end - start) / 2;
+
+                if(nums[mid] == key)
+                {
+                    return mid;
+                }
+
+                if(nums[mid] > key)
+                {
+                    end = mid - 1;
+                } else
+                {
+                    start = mid + 1;
+                }
+            }
+
+            return -1;
+        }
+
         public static int[] mergeSorted(int[] nums1, int[] nums2)
         {
             if (nums1.Length == 0)
@@ -433,6 +461,27 @@ namespace DataStructures
             backtrackkSumSubArray(0, nums.Length, nums, result, candidate, k);
 
             return result;
+        }
+
+        public static void btrack(int[] nums, int start, int target, List<int> res, List<List<int>> result)
+        {
+            if(target == 0)
+            {
+                result.Add(new List<int>(res));
+                return;
+            }
+
+            if (start >= nums.Length) return;
+
+            for(int i = start; i < nums.Length; i++)
+            {
+                if(nums[i] < target)
+                {
+                    res.Add(nums[i]);
+                    btrack(nums, i + 1, target - nums[i], res, result);
+                    res.RemoveAt(result.Count - 1);
+                }
+            }
         }
 
         public static void backtrackkSumSubArray(int bg, int end, int[] nums, List<List<int>> result, List<int> candidate, int target)
