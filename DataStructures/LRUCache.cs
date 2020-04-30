@@ -74,6 +74,7 @@ namespace DataStructures
             if(cache.TryGetValue(key, out node))
             {
                 node.value = value;
+                moveToHead(node);
             } else
             {
                 node = new DNode();
